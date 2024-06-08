@@ -44,6 +44,18 @@ public class FormacaoAcademicaImpl implements IFormacaoAcademicaService {
         return formacaoAcademicaRepository.findAll();
     }
 
+    @Override
+    public List<FormacaoAcademica> findAllByNomeCurso(String nomeCurso) {
+
+        var formacaoAcademicas = formacaoAcademicaRepository.findAllByNomeCurso(nomeCurso);
+
+        if(formacaoAcademicas.isEmpty()) {
+            throw new ObjectNotFound("Nenhuma formação acadêmica encontrada com o nome do curso: " + nomeCurso);
+        }
+
+        return formacaoAcademicas;
+    }
+
     private FormacaoAcademica updateData(FormacaoAcademica formacaoAcademicaOld, FormacaoAcademica formacaoAcademicaNew) {
 
         formacaoAcademicaOld.setCurso(formacaoAcademicaNew.getCurso());

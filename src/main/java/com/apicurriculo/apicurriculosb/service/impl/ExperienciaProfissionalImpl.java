@@ -52,6 +52,17 @@ public class ExperienciaProfissionalImpl implements IExperienciaProfissionalServ
         return experienciaProfissionals;
     }
 
+    @Override
+    public List<ExperienciaProfissional> findAllByDescription(String description) {
+        var experienciaProfissionals = experienciaProfissionalRepository.findAllByDescription(description);
+
+        if(experienciaProfissionals.isEmpty()) {
+            throw new ObjectNotFound("Nenhuma experiência profissional encontrada com a descrição: " + description);
+        }
+
+        return experienciaProfissionals;
+    }
+
     private ExperienciaProfissional updateData(ExperienciaProfissional experienciaProfissionalOld, ExperienciaProfissional experienciaProfissionalNew) {
 
         experienciaProfissionalOld.setDescricao(experienciaProfissionalNew.getDescricao());

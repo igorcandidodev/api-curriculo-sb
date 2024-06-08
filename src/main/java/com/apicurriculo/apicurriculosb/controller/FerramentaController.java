@@ -42,4 +42,9 @@ public class FerramentaController {
     public ResponseEntity<List<Ferramenta>> getAllFerramentas() {
         return ResponseEntity.ok(ferramentaService.getAllFerramentas());
     }
+
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<List<Ferramenta>> findAllByNome(@PathVariable String nome) {
+        return ResponseEntity.ok(ferramentaService.findAllByNome(nome));
+    }
 }

@@ -44,4 +44,9 @@ public class ExperienciaProfissionalController {
     public ResponseEntity<List<ExperienciaProfissional>> getAllExperienciaProfissionals() {
         return ResponseEntity.ok(experienciaProfissionalService.getAllExperienciaProfissional());
     }
+
+    @GetMapping("/description/{description}")
+    public ResponseEntity<List<ExperienciaProfissional>> findAllByDescription(@PathVariable String description) {
+        return ResponseEntity.ok(experienciaProfissionalService.findAllByDescription(description));
+    }
 }

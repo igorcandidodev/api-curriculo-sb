@@ -46,4 +46,9 @@ public class InformacaoPessoalController {
     public ResponseEntity<List<InformacaoPessoal>> getAllInformacaoPessoal() {
         return ResponseEntity.ok(informacaoPessoalService.getAllInformacaoPessoal());
     }
+
+    @GetMapping("/cargo/{cargo}")
+    public ResponseEntity<List<InformacaoPessoal>> findAllByCargo(@PathVariable String cargo) {
+        return ResponseEntity.ok(informacaoPessoalService.findAllByCargo(cargo));
+    }
 }

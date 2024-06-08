@@ -47,4 +47,9 @@ public class FormacaoAcademicaController {
         return ResponseEntity.ok(formacaoAcademicaService.getAllFormacaoAcademica());
     }
 
+    @GetMapping("/nome/{nomeCurso}")
+    public ResponseEntity<List<FormacaoAcademica>> findAllByNomeCurso(@PathVariable String nomeCurso) {
+        return ResponseEntity.ok(formacaoAcademicaService.findAllByNomeCurso(nomeCurso));
+    }
+
 }

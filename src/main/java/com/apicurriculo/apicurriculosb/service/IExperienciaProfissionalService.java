@@ -10,4 +10,5 @@ public interface IExperienciaProfissionalService {
     void deleteExperienciaProfissional(Long id);
     ExperienciaProfissional getExperienciaProfissionalById(Long id);
     List<ExperienciaProfissional> getAllExperienciaProfissional();
+    List<ExperienciaProfissional> findAllByDescription(String description);
 }

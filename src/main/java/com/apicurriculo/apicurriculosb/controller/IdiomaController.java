@@ -44,4 +44,9 @@ public class IdiomaController {
     public ResponseEntity<List<Idioma>> getAllIdiomas() {
         return ResponseEntity.ok(idiomaService.getAllIdiomas());
     }
+
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<List<Idioma>> findAllByNome(@PathVariable String nome) {
+        return ResponseEntity.ok(idiomaService.findAllByNome(nome));
+    }
 }

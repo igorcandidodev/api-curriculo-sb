@@ -10,4 +10,5 @@ public interface IFormacaoAcademicaService {
         void deleteFormacaoAcademica(Long id);
         FormacaoAcademica getFormacaoAcademicaById(Long id);
         List<FormacaoAcademica> getAllFormacaoAcademica();
+        List<FormacaoAcademica> findAllByNomeCurso(String nomeCurso);
 }

@@ -10,4 +10,5 @@ public interface IIdiomaService {
     void deleteIdioma(Long id);
     Idioma getIdiomaById(Long id);
     List<Idioma> getAllIdiomas();
+    List<Idioma> findAllByNome(String nome);
 }

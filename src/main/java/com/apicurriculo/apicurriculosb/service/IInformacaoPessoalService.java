@@ -10,4 +10,5 @@ public interface IInformacaoPessoalService {
     void deleteInformacaoPessoal(Long id);
     InformacaoPessoal getInformacaoPessoalById(Long id);
     List<InformacaoPessoal> getAllInformacaoPessoal();
+    List<InformacaoPessoal> findAllByCargo(String nome);
 }

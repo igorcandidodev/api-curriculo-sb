@@ -50,6 +50,18 @@ public class InformacaoPessoalImpl implements IInformacaoPessoalService {
         return informacaoPessoal;
     }
 
+    @Override
+    public List<InformacaoPessoal> findAllByCargo(String cargo) {
+
+        var informacaoPessoal = informacaoPessoalRepository.findAllByCargo(cargo);
+
+        if(informacaoPessoal.isEmpty()) {
+            throw new ObjectNotFound("Nenhuma informação pessoal encontrada com o cargo: " + cargo);
+        }
+
+        return informacaoPessoal;
+    }
+
     private InformacaoPessoal updateData(InformacaoPessoal informacaoPessoalOld, InformacaoPessoal informacaoPessoalNew) {
         informacaoPessoalOld.setNomeCompleto(informacaoPessoalNew.getNomeCompleto());
         informacaoPessoalOld.setCidade(informacaoPessoalNew.getCidade());

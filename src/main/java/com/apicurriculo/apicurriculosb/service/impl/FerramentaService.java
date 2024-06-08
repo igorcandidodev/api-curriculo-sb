@@ -51,6 +51,19 @@ public class FerramentaService implements IFerramentaService {
         return ferramentas;
     }
 
+    @Override
+    public List<Ferramenta> findAllByNome(String nome) {
+
+        var ferramentas = ferramentaRepository.findAllByNome(nome);
+
+        if(ferramentas.isEmpty()) {
+            throw new ObjectNotFound("Nenhuma ferramenta encontrada com o nome: " + nome);
+        }
+
+        return ferramentas;
+
+    }
+
     private Ferramenta updateData(Ferramenta ferramentaOld, Ferramenta ferramentaNew) {
         ferramentaOld.setNome(ferramentaNew.getNome());
 

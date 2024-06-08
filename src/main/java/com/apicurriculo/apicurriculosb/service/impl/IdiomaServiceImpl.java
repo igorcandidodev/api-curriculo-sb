@@ -50,6 +50,18 @@ public class IdiomaServiceImpl implements IIdiomaService {
         return idiomas;
     }
 
+    @Override
+    public List<Idioma> findAllByNome(String nome) {
+
+        var idiomas = idiomaRepository.findAllByNome(nome);
+
+        if(idiomas.isEmpty()) {
+            throw new ObjectNotFound("Nenhum idioma encontrado com o nome: " + nome);
+        }
+
+        return idiomas;
+    }
+
     private Idioma updateData(Idioma idiomaOld, Idioma idiomaNew) {
         idiomaOld.setNome(idiomaNew.getNome());
         idiomaOld.setNivel(idiomaNew.getNivel());

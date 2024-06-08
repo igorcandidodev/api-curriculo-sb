@@ -10,4 +10,5 @@ public interface IFerramentaService {
     void deleteFerramenta(Long id);
     Ferramenta getFerramentaById(Long id);
     List<Ferramenta> getAllFerramentas();
+    List<Ferramenta> findAllByNome(String nome);
 }

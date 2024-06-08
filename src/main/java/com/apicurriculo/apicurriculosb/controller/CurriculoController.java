@@ -1,7 +1,7 @@
 package com.apicurriculo.apicurriculosb.controller;
 
-import com.apicurriculo.apicurriculosb.dto.CurriculoDto;
-import com.apicurriculo.apicurriculosb.entity.Curriculo;
+import com.apicurriculo.apicurriculosb.dto.*;
+import com.apicurriculo.apicurriculosb.entity.*;
 import com.apicurriculo.apicurriculosb.service.ICurriculoService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -50,5 +50,39 @@ public class CurriculoController {
     @GetMapping
     public ResponseEntity<List<Curriculo>> getAllCurriculos() {
         return ResponseEntity.ok(curriculoService.getAllCurriculos());
+    }
+
+    @GetMapping("/nome/{nome}")
+    public ResponseEntity<List<Curriculo>> findAllByNome(@PathVariable String nome) {
+        return ResponseEntity.ok(curriculoService.findAllByNome(nome));
+    }
+
+    @PatchMapping("/formacao-academica/{idCurriculo}")
+    @Transactional
+    public ResponseEntity<Curriculo> addFormacaoAcademica(@PathVariable Long idCurriculo, @RequestBody FormacaoAcademicaDto formacaoAcademicaDto) {
+        var formacaoAcademica = new FormacaoAcademica(formacaoAcademicaDto);
+        return ResponseEntity.ok(curriculoService.addFormacaoAcademica(idCurriculo, formacaoAcademica));
+    }
+
+    @PatchMapping("/idioma/{idCurriculo}")
+    @Transactional
+    public ResponseEntity<Curriculo> addIdioma(@PathVariable Long idCurriculo, @RequestBody IdiomaDto idiomaDto) {
+        var idioma = new Idioma(idiomaDto);
+        return ResponseEntity.ok(curriculoService.addIdioma(idCurriculo, idioma));
+    }
+
+    @PatchMapping("/experiencia-profissional/{idCurriculo}")
+    @Transactional
+    public ResponseEntity<Curriculo> addExperienciaProfissional(@PathVariable Long idCurriculo, @RequestBody ExperienciaProfissionalDto experienciaProfissionalDto) {
+        var experienciaProfissional = new ExperienciaProfissional(experienciaProfissionalDto);
+
+        return ResponseEntity.ok(curriculoService.addExperienciaProfissional(idCurriculo, experienciaProfissional));
+    }
+
+    @PatchMapping("/ferramenta/{idCurriculo}")
+    @Transactional
+    public ResponseEntity<Curriculo> addFerramenta(@PathVariable Long idCurriculo, @RequestBody FerramentaDto ferramentaDto) {
+        var ferramenta = new Ferramenta(ferramentaDto);
+        return ResponseEntity.ok(curriculoService.addFerramenta(idCurriculo, ferramenta));
     }
 }
